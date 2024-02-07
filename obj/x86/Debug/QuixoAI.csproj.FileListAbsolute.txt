@@ -1,0 +1,7 @@
+C:\Users\joelh\Source\Repos\IrontTrailsGC\obj\x86\Debug\QuixoAI.csproj.AssemblyReference.cache
+C:\Users\joelh\Source\Repos\IrontTrailsGC\obj\x86\Debug\QuixoAI.csproj.CoreCompileInputs.cache
+C:\Users\joelh\Source\Repos\IrontTrailsGC\bin\Debug\ConsoleApplication.exe.config
+C:\Users\joelh\Source\Repos\IrontTrailsGC\bin\Debug\ConsoleApplication.exe
+C:\Users\joelh\Source\Repos\IrontTrailsGC\bin\Debug\ConsoleApplication.pdb
+C:\Users\joelh\Source\Repos\IrontTrailsGC\obj\x86\Debug\ConsoleApplication.exe
+C:\Users\joelh\Source\Repos\IrontTrailsGC\obj\x86\Debug\ConsoleApplication.pdb

@@ -1,7 +1,7 @@
 
 using System;
 
-struct Pos
+public struct Pos
 {
     public int row;
     public int col;
@@ -22,9 +22,15 @@ struct Pos
         }
         return true;
     }
+
+    public Pos(int row, int col)
+    {
+        this.row = row;
+        this.col = col;
+    }
 }
 
-struct Move
+public struct Move
 {
     public Pos from;
     public Pos to;
@@ -39,14 +45,14 @@ struct Move
 }
 
 
-class Game
+public class Game
 {
-    char[,] gameBoard = { {'-', '-', '-', '-', '-'},
-                          {'-', '-', '-', '-', '-'},
-                          {'-', '-', '-', '-', '-'},
-                          {'-', '-', '-', '-', '-'},
-                          {'-', '-', '-', '-', '-'} };
-    bool updateBoard(char player, Move move)
+    public char[,] gameBoard = { {'-', '-', '-', '-', '-'},
+                                 {'-', '-', '-', '-', '-'},
+                                 {'-', '-', '-', '-', '-'},
+                                 {'-', '-', '-', '-', '-'},
+                                 {'-', '-', '-', '-', '-'} };
+    public bool updateBoard(char player, Move move)
     {
         if (move.to == move.from)
         {
@@ -102,7 +108,7 @@ class Game
         return false;
     }
 
-    bool isWin(char[,] board, char player)
+    public bool isWin(char[,] board, char player)
     {
         for (int i = 0; i < 5; i++)
         {
@@ -145,7 +151,7 @@ class Game
         return false;
     }
 
-    void printBoard()
+    public void printBoard()
     {
         for (int i = 0; i < 5; i++)
         {
@@ -154,7 +160,7 @@ class Game
 
     }
 
-    Move getMove(char player)
+    public Move getMove(char player)
     {
         Pos from = new Pos();
         Pos to = new Pos();
@@ -169,7 +175,7 @@ class Game
             from.col = Convert.ToInt32(Console.ReadLine());
 
             //Check for Perimeter Piece
-            if (!((from.col == 0 || from.col == 4) && (from.row == 0 || from.row == 4)))
+            if (!((from.col == 0 || from.col == 4) || (from.row == 0 || from.row == 4)))
             {
                 Console.WriteLine("That's not a perimeter piece!");
                 incorrectMove = true;
@@ -188,33 +194,5 @@ class Game
         Console.WriteLine("Column:");
         to.col = Convert.ToInt32(Console.ReadLine());
         return new Move(from, to);
-    }
-
-    static void Main()
-    {
-        Game game = new Game();
-        while (!game.isWin(game.gameBoard, 'X') && !game.isWin(game.gameBoard, 'O'))
-        {
-            game.printBoard();
-            while (!game.updateBoard('X', game.getMove('X'))) ;
-            game.printBoard();
-            while (!game.updateBoard('O', game.getMove('O'))) ;
-        }
-
-
-        //Print result;
-        if (game.isWin(game.gameBoard, 'X'))
-        {
-            Console.WriteLine("Player one won!");
-        }
-        else if (game.isWin(game.gameBoard, 'O'))
-        {
-            Console.WriteLine("Player two won!");
-        }
-        else
-        {
-            Console.WriteLine("It was a tie.");
-        }
-        game.printBoard();
     }
 }
