@@ -194,24 +194,26 @@ class AI
 
     int minimax(char[,] board, int depth, char curPlayer, char ai, char player)
     {
-        Move[] possibleMoves = new Move[0];
-        if (curPlayer == ai)
-        {
-            possibleMoves = getPossibleMoves(board, ai);
-        }
-        else
-        {
-            possibleMoves = getPossibleMoves(board, player);
-        }
         
-        if (isWin(board, player)) return -1000;
-        else if (isWin(board, ai)) return 1000;
-        else if (possibleMoves.Length == 0) return 0;
+        if (isWin(board, player)) return -1000 / depth;
+        else if (isWin(board, ai)) return 1000 / depth;
 
         if (depth == 3)
         {
             return boardScore(board, ai, player);
         }
+        
+        Move[] possibleMoves = new Move[0];
+        if (curPlayer == ai)
+        {
+            possibleMoves = getPossibleMoves(board, player);
+        }
+        else
+        {
+            possibleMoves = getPossibleMoves(board, ai);
+        }
+        
+        if (possibleMoves.Length == 0) return 0;
 
         if (curPlayer == ai)
         {
@@ -262,7 +264,7 @@ class AI
             Array.Copy(board, boardCopy, 25);
             boardCopy = updateBoard(ai, move, boardCopy);
 
-            int moveVal = minimax(boardCopy, 0, player, ai, player);
+            int moveVal = minimax(boardCopy, 1, player, ai, player);
         
             if (moveVal > bestVal)
             {
