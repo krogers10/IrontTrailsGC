@@ -198,7 +198,7 @@ class AI
         if (isWin(board, player)) return -1000 / depth;
         else if (isWin(board, ai)) return 1000 / depth;
 
-        if (depth == 3)
+        if (depth == 4)
         {
             return boardScore(board, ai, player);
         }

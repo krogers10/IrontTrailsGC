@@ -11,16 +11,17 @@ public class Program
             game.printBoard();
             while (!game.updateBoard('X', game.getMove('X'))) ;
             if (game.isWin(game.gameBoard, 'X') || game.isWin(game.gameBoard, 'O')) { break; }
-            Console.WriteLine();
+            
             game.printBoard();
             while (!game.updateBoard('O', ai.findBestMove(game.gameBoard, 'O', 'X')));
+            Console.WriteLine();
         }
 
         game.printBoard();
         //Print result;
         if (game.isWin(game.gameBoard, 'X'))
         {
-            Console.WriteLine("Player one won!");
+            Console.WriteLine("You won!");
         }
         else if (game.isWin(game.gameBoard, 'O'))
         {
