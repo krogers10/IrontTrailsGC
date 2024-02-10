@@ -49,6 +49,9 @@ class AI
     }
 
 
+    
+
+
     char[,] updateBoard(char player, Move move, char[,] gameBoard)
     {
 
@@ -100,6 +103,21 @@ class AI
         return gameBoard;
     }
 
+    // This suffle function taken from https://stackoverflow.com/questions/273313/randomize-a-listt
+    private static Random rng = new Random();
+
+    public static void Shuffle(List<Move> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            Move value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
 
     Move[] getPossibleMoves(char[,] board, char opponent)
     {
@@ -151,6 +169,7 @@ class AI
                 possibleMoves.Add(new Move(new Pos(i, 4), new Pos(i, 0)));
             }
         }
+        Shuffle(possibleMoves);
         return possibleMoves.ToArray();
     }
 
